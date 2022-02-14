@@ -1,0 +1,27 @@
+<div class="p-3">
+  <div class="p-fluid" [formGroup]="formGroup" #f="ngForm">
+    <div class="field">
+      <p-dropdown
+        [autoDisplayFirst]="false"
+        placeholder="Ödeme Tipi"
+        [options]="installments"
+        optionLabel="name"
+        optionValue="value"
+        [showClear]="true"
+        [required]="true"
+        formControlName="installment"
+      ></p-dropdown>
+    </div>
+    <button
+      class="field p-button-raised p-button-rounded"
+      label="Devam Et"
+      icon="pi pi-chevron-right"
+      iconPos="right"
+      type="button"
+      [disabled]="f.form.invalid"
+      [loading]="isLoading"
+      (click)="nextStep()"
+      pButton
+    ></button>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+.field {
+  margin-top: 2rem;
+}
+
+input[type="date"] {
+  color: #ffffff;
+}
+
+input[type="date"]:focus,
+input[type="date"].ng-valid:valid {
+  color: #666666;
+}

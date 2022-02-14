@@ -1,0 +1,61 @@
+<div class="p-3">
+  <div class="p-fluid">
+    <form [formGroup]="formGroup" #f="ngForm">
+      <span class="p-float-label field">
+        <input type="text" pInputText formControlName="tcNo" />
+        <label for="float-input-invalid">Tc Kimlik No</label>
+      </span>
+      <span class="p-float-label field">
+        <input type="text" pInputText formControlName="passaport" />
+        <label for="float-input-invalid">Pasaport No</label>
+      </span>
+      <span class="p-float-label field">
+        <input type="text" pInputText formControlName="name" />
+        <label for="float-input-invalid">Adı</label>
+      </span>
+      <span class="p-float-label field">
+        <input type="text" pInputText formControlName="surname" />
+        <label for="float-input-invalid">Soyadı</label>
+      </span>
+      <div class="field">
+        <p-dropdown
+          [autoDisplayFirst]="false"
+          placeholder="Cinsiyet"
+          [options]="genders"
+          optionLabel="name"
+          optionValue="value"
+          [showClear]="true"
+          [required]="true"
+          formControlName="gender"
+        ></p-dropdown>
+      </div>
+      <span class="p-float-label field">
+        <input type="date" pInputText formControlName="birthdate" />
+        <label for="float-input-invalid">Doğum Tarihi</label>
+      </span>
+      <span class="p-float-label field">
+        <p-inputMask mask="(999)-999-99-99" [unmask]="true" formControlName="gsm"></p-inputMask>
+        <label for="float-input-invalid">Gsm</label>
+      </span>
+      <span class="p-float-label field">
+        <input type="text" pInputText formControlName="mail" />
+        <label for="float-input-invalid">Eposta</label>
+      </span>
+      <span class="p-float-label field">
+        <input type="text" pInputText formControlName="address" />
+        <label for="float-input-invalid">Adres</label>
+      </span>
+      <button
+        class="field p-button-raised p-button-rounded"
+        label="Devam Et"
+        icon="pi pi-chevron-right"
+        iconPos="right"
+        type="submit"
+        [disabled]="f.form.invalid"
+        [loading]="isLoading"
+        (click)="submitForm()"
+        pButton
+      ></button>
+    </form>
+  </div>
+</div>

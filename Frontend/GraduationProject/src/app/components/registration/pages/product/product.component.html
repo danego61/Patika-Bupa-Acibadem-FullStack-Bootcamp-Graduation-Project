@@ -1,0 +1,25 @@
+<div class="p-3">
+  <div class="p-fluid" [formGroup]="formGroup"  #f="ngForm">
+    <div class="field" *ngFor="let product of products">
+      <p-radioButton
+        name="productId"
+        value="{{ product.productId }}"
+        formControlName="productId"
+      >
+      </p-radioButton>
+      <span class="product-name">{{ product.productName }}</span>
+      <span class="product-price">{{ product.price }}</span>
+    </div>
+    <button
+      class="field p-button-raised p-button-rounded"
+      label="Devam Et"
+      icon="pi pi-chevron-right"
+      iconPos="right"
+      type="button"
+      [disabled]="f.form.invalid"
+      [loading]="isLoading"
+      (click)="nextStep()"
+      pButton
+    ></button>
+  </div>
+</div>

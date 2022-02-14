@@ -1,0 +1,17 @@
+<div class="container">
+  <router-outlet></router-outlet>
+
+  <div class="p-3">
+    <div class="p-fluid">
+      <button
+        class="field p-button-raised p-button-rounded"
+        [label]="screen"
+        icon="pi pi-chevron-right"
+        iconPos="right"
+        type="button"
+        (click)="changeScreen()"
+        pButton
+      ></button>
+    </div>
+  </div>
+</div>

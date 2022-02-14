@@ -1,0 +1,108 @@
+<div class="p-3">
+  <div class="p-fluid">
+    <form [formGroup]="formGroup">
+      <span class="p-float-label field">
+        <input type="text" pInputText formControlName="byInsurerTC" />
+        <label for="float-input-invalid">Sigorta Ettiren TC</label>
+      </span>
+      <span class="p-float-label field">
+        <input type="text" pInputText formControlName="byInsurerName" />
+        <label for="float-input-invalid">Sigorta Ettiren Adı</label>
+      </span>
+      <span class="p-float-label field">
+        <input type="text" pInputText formControlName="byInsurerSurname" />
+        <label for="float-input-invalid">Sigorta Ettiren Soyadı</label>
+      </span>
+      <span class="p-float-label field">
+        <input type="text" pInputText formControlName="byInsuredTC" />
+        <label for="float-input-invalid">Sigortalı TC</label>
+      </span>
+      <span class="p-float-label field">
+        <input type="text" pInputText formControlName="byInsuredName" />
+        <label for="float-input-invalid">Sigortalı Adı</label>
+      </span>
+      <span class="p-float-label field">
+        <input type="text" pInputText formControlName="byInsuredSurname" />
+        <label for="float-input-invalid">Sigortalı Soyadı</label>
+      </span>
+      <span class="p-float-label field">
+        <p-inputNumber
+          mode="decimal"
+          [maxFractionDigits]="0"
+          formControlName="byOfferNumber"
+        ></p-inputNumber>
+        <label for="float-input-invalid">Teklif No</label>
+      </span>
+      <span class="p-float-label field">
+        <p-inputNumber
+          mode="decimal"
+          [maxFractionDigits]="0"
+          formControlName="byPolicyNumber"
+        ></p-inputNumber>
+        <label for="float-input-invalid">Poliçe No</label>
+      </span>
+      <div class="field">
+        <p-dropdown
+          [autoDisplayFirst]="false"
+          placeholder="Teklif Durumu"
+          [options]="offerStatus"
+          optionLabel="name"
+          optionValue="value"
+          [showClear]="true"
+          formControlName="byOfferStatus"
+        ></p-dropdown>
+      </div>
+      <div class="field">
+        <p-dropdown
+          [autoDisplayFirst]="false"
+          placeholder="Poliçe Durumu"
+          [options]="offerStatus"
+          optionLabel="name"
+          optionValue="value"
+          [showClear]="true"
+          formControlName="byPolicyStatus"
+        ></p-dropdown>
+      </div>
+      <button
+        class="field p-button-raised p-button-rounded"
+        label="Ara"
+        icon="pi pi-search"
+        iconPos="left"
+        type="submit"
+        [loading]="isLoading"
+        (click)="search()"
+        pButton
+      ></button>
+    </form>
+    <div class="field">
+      <p-table [value]="results" responsiveLayout="scroll">
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+            <th>TcNo</th>
+            <th>Pasaport No</th>
+            <th>Adı</th>
+            <th>Soyadı</th>
+            <th>Cinsiyet</th>
+            <th>Doğum Tarihi</th>
+            <th>Gsm</th>
+            <th>Eposta</th>
+            <th>Adres</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+          <tr>
+            <td>{{ rowData.customer.tcNo }}</td>
+            <td>{{ rowData.customer.passaport }}</td>
+            <td>{{ rowData.customer.name }}</td>
+            <td>{{ rowData.customer.surname }}</td>
+            <td>{{ genders[rowData.customer.gender.valueOf()].name }}</td>
+            <td>{{ formatDate(rowData.customer.birthdate) }}</td>
+            <td>{{ rowData.customer.gsm }}</td>
+            <td>{{rowData.customer.mail}}</td>
+            <td>{{ rowData.customer.address }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>
